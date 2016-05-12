@@ -5,6 +5,13 @@
     <title>home</title>
 </head>
 <body>
-   <h1>hello</h1>
+   <h1>All albums:</h1>
+   <ul>
+       {% for album in albums %}
+           <li>
+               <a href="{% url 'detail' album.id %}">{{album.album_title}}</a>
+           </li> 
+       {% endfor %}
+   </ul>
 </body>
 </html>
