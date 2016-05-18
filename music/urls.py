@@ -4,8 +4,10 @@ from . import views
 app_name = 'music'
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^(?P<album_id>\d+)/$', views.detail, name='detail'),
-    #/music/id/favorite
-    url(r'^(?P<album_id>\d+)/favorite/$', views.favorite, name='favorite'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
+    url(r'^album/add/$', views.CreateView.as_view(), name='album-add'),
+    
+    url(r'^album/(?P<pk>\d+)/$', views.AlbumUpdate.as_view(), name='album-update'),
+    url(r'^album/(?P<pk>\d+)/delete/$', views.AlbumDelete.as_view(), name='album-delete'),
 ]
